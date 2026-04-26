@@ -38,12 +38,16 @@ async function addProductToCart(productId, quantity) {
 
   if (!isValid) return { success: false, error };
 
-  const response = await addToCart(productId, quantity);
+  try {
+    const response = await addToCart(productId, quantity);
 
-  return {
-    success: true,
-    data: response,
-  };
+    return {
+      success: true,
+      data: response,
+    };
+  } catch (error) {
+    return { success: false, errors: error };
+  }
 }
 
 /**
@@ -62,12 +66,16 @@ async function updateProduct(cartId, quantity) {
 
   if (!isValid) return { success: isValid, error };
 
-  const response = await updateCartItem(cartId, quantity);
+  try {
+    const response = await updateCartItem(cartId, quantity);
 
-  return {
-    success: true,
-    data: response,
-  };
+    return {
+      success: true,
+      data: response,
+    };
+  } catch (error) {
+    return { success: false, errors: error };
+  }
 }
 /**
  * 移除購物車商品
@@ -79,12 +87,16 @@ async function removeProduct(cartId) {
   // 提示：呼叫 deleteCartItem()
   // 回傳格式：{ success: true, data: ... } / { success: false, error: ... }
 
-  const response = await deleteCartItem(cartId);
+  try {
+    const response = await deleteCartItem(cartId);
 
-  return {
-    success: true,
-    data: response,
-  };
+    return {
+      success: true,
+      data: response,
+    };
+  } catch (error) {
+    return { success: false, errors: error };
+  }
 }
 
 /**
@@ -95,12 +107,17 @@ async function emptyCart() {
   // 請實作此函式
   // 提示：呼叫 clearCart()
   // 回傳格式：{ success: true, data: ... }
-  const response = await clearCart();
 
-  return {
-    success: true,
-    data: response,
-  };
+  try {
+    const response = await clearCart();
+
+    return {
+      success: true,
+      data: response,
+    };
+  } catch (error) {
+    return { success: false, errors: error };
+  }
 }
 
 /**
@@ -151,6 +168,7 @@ function displayCart(cart) {
     const { quantity } = item;
     const { title, price, origin_price } = item.product;
 
+    console.log("購物車內容：");
     console.log("----------------------------------------");
     console.log(`${index + 1} ${title}`);
     console.log(`數量: ${quantity}`);
