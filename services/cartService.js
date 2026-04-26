@@ -34,7 +34,7 @@ async function addProductToCart(productId, quantity) {
   // 驗證通過後，呼叫 addToCart() 加入購物車
   // 回傳格式：{ success: true, data: ... } / { success: false, error: ... }
 
-  const { isValid, error } = validateCartQuantity(quantity);
+  const { isValid, error = "" } = validateCartQuantity(quantity);
 
   if (!isValid) return { success: false, error };
 
@@ -46,7 +46,7 @@ async function addProductToCart(productId, quantity) {
       data: response,
     };
   } catch (error) {
-    return { success: false, errors: error };
+    return { success: false,  error };
   }
 }
 
@@ -74,7 +74,7 @@ async function updateProduct(cartId, quantity) {
       data: response,
     };
   } catch (error) {
-    return { success: false, errors: error };
+    return { success: false, error };
   }
 }
 /**
@@ -95,7 +95,7 @@ async function removeProduct(cartId) {
       data: response,
     };
   } catch (error) {
-    return { success: false, errors: error };
+    return { success: false, error };
   }
 }
 
@@ -116,7 +116,7 @@ async function emptyCart() {
       data: response,
     };
   } catch (error) {
-    return { success: false, errors: error };
+    return { success: false, error };
   }
 }
 
