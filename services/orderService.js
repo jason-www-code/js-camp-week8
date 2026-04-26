@@ -94,7 +94,7 @@ async function updatePaymentStatus(orderId, isPaid) {
       data: response,
     };
   } catch (error) {
-    return { success: false, errors: error };
+    return { success: false, error };
   }
 }
 
@@ -115,7 +115,7 @@ async function removeOrder(orderId) {
       data: response,
     };
   } catch (error) {
-    return { success: false, errors: error };
+    return { success: false,  error };
   }
 }
 
