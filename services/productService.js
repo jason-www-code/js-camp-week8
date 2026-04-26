@@ -17,11 +17,11 @@ async function getProducts() {
   // 請實作此函式
   // 提示：使用 fetchProducts() 取得產品陣列
   // 回傳格式：{ products, count: 產品數量 }
-  const products = await fetchProducts();
+  const response = await fetchProducts();
 
   return {
-    products,
-    count: products.length,
+    response,
+    count: response.length,
   };
 }
 
@@ -35,9 +35,9 @@ async function getProductsByCategory(category) {
   // 提示：使用 fetchProducts() 取得所有產品後，篩選出符合 category 的產品
   // 回傳格式：篩選後的產品陣列
 
-  const products = await fetchProducts();
+  const response = await fetchProducts();
 
-  return products.filter((product) => product.category === category);
+  return response.filter((product) => product.category === category);
 }
 
 /**
@@ -50,9 +50,9 @@ async function getProductById(productId) {
   // 提示：使用 fetchProducts() 取得所有產品後，找出 id 符合的產品
   // 若找不到，回傳 null
 
-  const products = await fetchProducts();
+  const response = await fetchProducts();
 
-  return products.find((product) => product.id === productId) || null;
+  return response.find((product) => product.id === productId) || null;
 }
 
 /**
@@ -63,9 +63,9 @@ async function getCategories() {
   // 請實作此函式
   // 提示：使用 fetchProducts() 取得所有產品後，代入到 utils getAllCategories()
 
-  const products = await fetchProducts();
+  const response = await fetchProducts();
 
-  return getAllCategories(products);
+  return getAllCategories(response);
 }
 
 /**
