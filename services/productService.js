@@ -20,7 +20,7 @@ async function getProducts() {
   const response = await fetchProducts();
 
   return {
-    response,
+    products: response,
     count: response.length,
   };
 }
