@@ -46,7 +46,7 @@ async function addProductToCart(productId, quantity) {
       data: response,
     };
   } catch (error) {
-    return { success: false,  error };
+    return { success: false, error };
   }
 }
 
@@ -162,13 +162,14 @@ function displayCart(cart) {
   // 商品總計：NT$ 1,600
   // 折扣後金額：NT$ 1,600
   const { carts, total, finalTotal } = cart;
-  if (!carts?.length) console.log("購物車是空的");
+  if (!carts?.length) return console.log("購物車是空的");
+
+  console.log("購物車內容：");
 
   carts.forEach((item, index) => {
     const { quantity } = item;
     const { title, price, origin_price } = item.product;
 
-    console.log("購物車內容：");
     console.log("----------------------------------------");
     console.log(`${index + 1} ${title}`);
     console.log(`數量: ${quantity}`);

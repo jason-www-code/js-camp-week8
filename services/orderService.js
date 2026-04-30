@@ -115,7 +115,7 @@ async function removeOrder(orderId) {
       data: response,
     };
   } catch (error) {
-    return { success: false,  error };
+    return { success: false, error };
   }
 }
 
@@ -138,7 +138,7 @@ async function removeOrder(orderId) {
 function formatOrder(order) {
   const { id, user, products, total, paid, createdAt } = order;
 
-  const totalFormatted = formatCurrency(paid);
+  const totalFormatted = formatCurrency(total);
   const paidText = paid ? "已付款" : "未付款";
   const createdAtFormatted = formatDate(createdAt);
   const daysAgo = getDaysAgo(createdAt);
@@ -182,9 +182,11 @@ function displayOrders(orders) {
   // 商品明細：
   //   - 產品名稱 x 2（產品數量）
   // ========================================
-  if (!orders?.length) console.log("沒有訂單");
+  if (!orders?.length) return console.log("沒有訂單");
 
   const formattedOrders = orders.map(formatOrder);
+
+  console.log(`訂單列表：`);
 
   formattedOrders.forEach((order, index) => {
     const {
@@ -204,7 +206,6 @@ function displayOrders(orders) {
       .map((product) => `- ${product.title} x ${product.quantity} \n`)
       .join("");
 
-    console.log(`訂單列表：`);
     console.log(`========================================`);
     console.log(`訂單 ${index + 1}`);
     console.log(`----------------------------------------`);
