@@ -214,7 +214,7 @@ function displayOrders(orders) {
     console.log(`聯絡電話：${user.tel}`);
     console.log(`寄送地址：${user.address}`);
     console.log(`付款方式：${user.payment}`);
-    console.log(`訂單金額：${total}`);
+    console.log(`訂單金額：${totalFormatted}`);
     console.log(`付款狀態：${paidText}`);
     console.log(`建立時間：${createdAt}(${daysAgo})`);
     console.log(`----------------------------------------`);
